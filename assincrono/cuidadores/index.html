@@ -27,6 +27,7 @@ input:focus,textarea:focus,button:focus-visible,label:focus-within{outline:3px s
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips label{position:relative;min-height:48px;padding:0 16px;border-radius:24px;border:1px solid #C9D2DA;background:var(--bg);display:flex;align-items:center;font-size:16px;font-weight:700;cursor:pointer}
 .chips input{position:absolute;opacity:0;pointer-events:none}
+.chips.multi label{min-height:48px;padding:10px 16px;border-radius:16px;line-height:1.3}
 .chips label.on{background:var(--acc);border-color:var(--acc);color:#fff}
 .scale{display:flex;gap:6px}
 .scale label{flex:1;justify-content:center;padding:0;border-radius:14px;height:52px;font-size:19px;font-weight:800}
@@ -93,6 +94,7 @@ function buildQs(box,qs){
     if(q.t==='text'||q.t==='num') inner='<input type="'+(q.t==='num'?'number':'text')+'" '+(q.t==='num'?'inputmode="numeric" min="5" max="110"':'')+' id="'+id+'" aria-labelledby="'+id+'_l" placeholder="'+esc(q.ph||'')+'">';
     else if(q.t==='long') inner='<textarea id="'+id+'" aria-labelledby="'+id+'_l" placeholder="'+esc(q.ph||'')+'"></textarea>';
     else {
+      if(q.t==='multi'){ inner='<div role="group" aria-labelledby="'+id+'_l" class="chips multi">'+q.opts.map(function(o){return '<label><input type="checkbox" name="'+id+'" value="'+esc(o)+'">'+esc(o)+'</label>';}).join('')+'</div>'; html+='<div class="q" data-q="'+q.id+'">'+lab+inner+(q.note?'<span class="note">'+esc(q.note)+'</span>':'')+'<span class="err" hidden>Responda esta pergunta para seguir.</span></div>'; return; }
       var opts=q.t==='choice'?q.opts:(q.t==='nps'?[0,1,2,3,4,5,6,7,8,9,10]:[1,2,3,4,5]);
       inner='<div role="radiogroup" aria-labelledby="'+id+'_l" class="chips'+(q.t==='scale'?' scale':'')+(q.t==='nps'?' scale nps':'')+'">'+opts.map(function(o){return '<label><input type="radio" name="'+id+'" value="'+esc(o)+'">'+esc(o)+'</label>';}).join('')+'</div>';
       if(q.t==='scale') inner+='<div class="ends"><span>1 · '+esc(q.lo)+'</span><span>5 · '+esc(q.hi)+'</span></div>';
@@ -102,8 +104,8 @@ function buildQs(box,qs){
     html+='<div class="q" data-q="'+q.id+'">'+lab+inner+'<span class="err" hidden>Responda esta pergunta para seguir.</span></div>';
   });
   box.innerHTML=html;
-  box.addEventListener('change',function(e){ if(e.target.type==='radio'){ box.querySelectorAll('input[name="'+e.target.name+'"]').forEach(function(r){r.parentNode.classList.toggle('on',r.checked);}); } });
-  function val(q){var id='q_'+q.id; if(q.t==='text'||q.t==='num'||q.t==='long'){return (document.getElementById(id).value||'').trim();} var r=box.querySelector('input[name="'+id+'"]:checked'); return r?r.value:'';}
+  box.addEventListener('change',function(e){ if(e.target.type==='checkbox'){ e.target.parentNode.classList.toggle('on',e.target.checked); var none=/^(Nenhum|Não pagaria)/; var grp=box.querySelectorAll('input[name="'+e.target.name+'"]'); if(e.target.checked) grp.forEach(function(c){ if(c!==e.target && (none.test(c.value)!==none.test(e.target.value)) && c.checked){c.checked=false;c.parentNode.classList.remove('on');} }); } if(e.target.type==='radio'){ box.querySelectorAll('input[name="'+e.target.name+'"]').forEach(function(r){r.parentNode.classList.toggle('on',r.checked);}); } });
+  function val(q){var id='q_'+q.id; if(q.t==='text'||q.t==='num'||q.t==='long'){return (document.getElementById(id).value||'').trim();} if(q.t==='multi'){return Array.prototype.map.call(box.querySelectorAll('input[name="'+id+'"]:checked'),function(c){return c.value;}).join('; ');} var r=box.querySelector('input[name="'+id+'"]:checked'); return r?r.value:'';}
   return {
     read:function(){return qs.map(function(q){return {id:q.id,q:q.q,a:val(q)};});},
     missing:function(){return qs.filter(function(q){return q.req&&!val(q);});},
