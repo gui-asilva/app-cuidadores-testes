@@ -1,0 +1,53 @@
+TESTE ASSÍNCRONO DO CANTINHO
+(a pessoa faz sozinha, sem chamada e sem gravação)
+
+O QUE TEM NESTA PASTA
+- index.html ......... página de entrada: a pessoa escolhe Família ou Cuidadores.
+- familia/ ........... 13 tarefas (teste-1 a teste-13), início (index.html) e final (fim.html).
+- cuidadores/ ........ 9 tarefas (teste-1 a teste-9), início e final.
+- config.js .......... (dentro de cada pasta) para onde as respostas vão.
+- criar-formulario.gs  script que cria o Formulário Google e a planilha de respostas.
+
+COMO A PESSOA FAZ O TESTE
+1. Abre o link e escolhe o grupo.
+2. Lê o consentimento e marca "Li e concordo".
+3. Responde às perguntas iniciais (as mesmas do roteiro conduzido, em formato de múltipla escolha quando dá).
+4. Lê como funcionam as tarefas e faz as tarefas. A primeira é sempre a mesma (na cuidadora, C1 e C2); as outras vêm sorteadas.
+5. Depois de cada tarefa: nota de 1 a 5 para a facilidade (obrigatória) e comentário (opcional). Se o WhatsApp estiver configurado, aparece também "Mande um áudio no WhatsApp".
+6. No final, responde às perguntas finais e toca em "Enviar respostas".
+
+O QUE O PROTÓTIPO ANOTA SOZINHO, EM CADA TAREFA
+- se concluiu ou tocou em "Não consegui" (no assíncrono, ele fica ativo depois de 3 minutos, e não 5);
+- o tempo total;
+- o caminho: cada tela por onde passou e quantos segundos ficou nela;
+- os toques fora da tarefa (os que mostram o aviso amarelo), com a tela e o botão;
+- os toques em botões cinza (desativados);
+- os erros que importam: na tarefa 4, marcar o remédio como dado; na 10 e na C9, tentar "Desfazer"; na 11, tentar marcar no Hoje do Vô José em vez da Vó Maria;
+- a ordem sorteada, o tamanho da tela e o navegador.
+
+COMO LIGAR AO FORMULÁRIO GOOGLE (uma vez só, uns 5 minutos)
+1. Abra https://script.google.com com a conta Google da equipe e crie um projeto novo.
+2. Cole o conteúdo de criar-formulario.gs, salve e toque em Executar. Autorize.
+3. No "Registro de execução", copie o bloco "window.__ccCfg = {...}".
+4. Cole esse bloco no config.js das pastas "familia" e "cuidadores" (substituindo o que está lá).
+   Se quiser o botão de áudio, coloque o número do WhatsApp em "whatsapp" (ex.: 5511999998888).
+   Ou mande o bloco para o Claude, que atualiza e devolve o zip.
+5. O formulário cria uma planilha: cada envio vira uma linha, com uma coluna por tarefa
+   ("Tarefa 1" ... "Tarefa 13"; nas cuidadoras, Tarefa 1 = C1 e as colunas 10 a 13 ficam vazias)
+   e uma coluna com todos os dados em JSON.
+6. Faça um teste você mesma antes de mandar para as pessoas e confira se a linha chegou.
+
+Enquanto o config.js estiver vazio, o botão "Enviar respostas" mostra o texto completo
+com um botão "Copiar respostas" para a pessoa mandar por WhatsApp ou e-mail.
+
+COMO PUBLICAR O LINK
+Os arquivos precisam estar num endereço da internet (não funciona mandando o zip para a pessoa).
+Um jeito simples e grátis: https://app.netlify.com/drop — arraste esta pasta "assincrono" inteira
+e use o link gerado (ele abre o index.html). GitHub Pages também serve.
+
+CUIDADOS
+- A pessoa precisa fazer tudo no mesmo celular e no mesmo navegador, sem fechar a aba.
+  Se fechar, é só abrir o mesmo link: aparece "Continuar de onde parei".
+- Funciona melhor no celular. No computador, o app aparece no tamanho de um celular no meio da tela.
+- Sem quem conduz, ninguém responde dúvidas de contexto. Por isso o texto da tarefa e o "Lembre" ficam na tela.
+- Leia as notas e comentários junto com o caminho: nota baixa + muitos toques fora = ponto de travamento.

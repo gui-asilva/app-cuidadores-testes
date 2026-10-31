@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teste do Cantinho · Final</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap">
+<script src="./config.js"></script>
+<style>
+:root{--bg:#F4F6F8;--surf:#FFFFFF;--line:#DDE3E8;--ink:#13202B;--mut:#4A5A68;--acc:#1D4ED8;--accBg:#E5ECFD;--warnBg:#FFF4ED;--warn:#9A3412;--off:#C9D2DA}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:480px;margin:0 auto;padding:28px 18px 40px;display:flex;flex-direction:column;gap:18px}
+.kick{font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--acc)}
+h1{margin:0;font-size:30px;line-height:1.18;font-weight:800}
+h2{margin:0;font-size:21px;line-height:1.25;font-weight:800}
+p{margin:0;font-size:18px;line-height:1.5;color:#344250}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.li{display:flex;gap:12px;font-size:17px;line-height:1.45}
+.li b{display:block}
+.dot{flex-shrink:0;width:26px;height:26px;border-radius:13px;background:var(--accBg);color:var(--acc);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.q{display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--surf);border:1px solid var(--line);border-radius:18px}
+.q.bad{border:2px solid #EA580C}
+.ql{font-size:17px;font-weight:800;line-height:1.35}
+.opt{font-weight:600;color:var(--mut);font-size:14px}
+.note{font-size:14px;color:var(--mut);line-height:1.4}
+input[type=text],input[type=number],textarea{width:100%;font:inherit;font-size:17px;color:var(--ink);background:var(--bg);border:1px solid #C9D2DA;border-radius:14px;padding:12px 14px}
+input[type=text],input[type=number]{height:52px}
+textarea{min-height:92px;resize:vertical;line-height:1.4}
+input:focus,textarea:focus,button:focus-visible,label:focus-within{outline:3px solid #93B4FF;outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;min-height:48px;padding:0 16px;border-radius:24px;border:1px solid #C9D2DA;background:var(--bg);display:flex;align-items:center;font-size:16px;font-weight:700;cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.scale{display:flex;gap:6px}
+.scale label{flex:1;justify-content:center;padding:0;border-radius:14px;height:52px;font-size:19px;font-weight:800}
+.ends{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:700;color:var(--mut)}
+.ends span:last-child{text-align:right}
+.nps label{font-size:16px;height:46px}
+.nps{flex-wrap:wrap}
+.nps label{flex:0 0 calc((100% - 30px)/6)}
+.err{font-size:14px;font-weight:800;color:var(--warn)}
+.btn{height:60px;border-radius:18px;border:none;font:inherit;font-size:19px;font-weight:800;background:var(--acc);color:#fff;cursor:pointer;width:100%}
+.btn.off{background:var(--off);color:var(--mut);cursor:default}
+.btn2{height:52px;border-radius:16px;border:1px solid var(--line);background:var(--surf);color:var(--ink);font:inherit;font-size:16px;font-weight:800;cursor:pointer;width:100%}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:17px;font-weight:700;line-height:1.4;cursor:pointer}
+.check input{width:26px;height:26px;flex-shrink:0;margin:0;accent-color:var(--acc)}
+.warn{background:var(--warnBg);color:#7C2D12;border-radius:14px;padding:12px 14px;font-size:15px;font-weight:700;line-height:1.45}
+.ok{background:#DCFCE7;color:#14532D;border-radius:14px;padding:14px;font-size:16px;font-weight:700;line-height:1.45}
+.step{display:flex;flex-direction:column;gap:18px}
+.step[hidden]{display:none}
+.bar{display:flex;gap:6px}.bar span{flex:1;height:6px;border-radius:3px;background:var(--line)}.bar span.on{background:var(--acc)}
+</style></head><body><main>
+<section class="step" id="s1">
+  <div class="bar"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+  <span class="kick">ÚLTIMA PARTE</span>
+  <h1>Você terminou as tarefas!</h1>
+  <p>Faltam só algumas perguntas sobre o que você achou.</p>
+  <div id="none" class="warn" hidden>Não encontramos as respostas das tarefas neste navegador. Abra o link do teste desde o começo, no mesmo celular e no mesmo navegador.</div>
+  <div id="qbox" style="display:flex;flex-direction:column;gap:12px"></div>
+  <button class="btn off" aria-disabled="true" id="send">Enviar respostas</button>
+</section>
+<section class="step" id="s2" hidden>
+  <h1>Respostas prontas</h1>
+  <div id="sendInfo" class="warn"></div>
+  <button class="btn" id="copy">Copiar respostas</button>
+  <span class="note" id="copied" hidden>Copiado! Cole numa mensagem para quem pediu o teste.</span>
+  <textarea id="all" readonly style="min-height:220px;font-size:13px"></textarea>
+</section>
+</main>
+<form id="gf" method="POST" target="_self" hidden></form>
+<script>
+var AD={get:function(){try{if((window.name||'').indexOf('ccA:')===0)return JSON.parse(window.name.slice(4));}catch(e){}try{return JSON.parse(localStorage.getItem('cc-async')||'null');}catch(e){return null;}},
+set:function(d){var j=JSON.stringify(d);try{window.name='ccA:'+j;}catch(e){}try{localStorage.setItem('cc-async',j);}catch(e){}}};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+/* Builds the questions into a container and returns a reader. Buttons stay grey until required answers are in; hints show only after a tap. */
+function buildQs(box,qs){
+  var html='';
+  qs.forEach(function(q,i){
+    var id='q_'+q.id, lab='<span class="ql" id="'+id+'_l">'+esc(q.q)+(q.req?'':' <span class="opt">(opcional)</span>')+'</span>';
+    var inner='';
+    if(q.t==='text'||q.t==='num') inner='<input type="'+(q.t==='num'?'number':'text')+'" '+(q.t==='num'?'inputmode="numeric" min="5" max="110"':'')+' id="'+id+'" aria-labelledby="'+id+'_l" placeholder="'+esc(q.ph||'')+'">';
+    else if(q.t==='long') inner='<textarea id="'+id+'" aria-labelledby="'+id+'_l" placeholder="'+esc(q.ph||'')+'"></textarea>';
+    else {
+      var opts=q.t==='choice'?q.opts:(q.t==='nps'?[0,1,2,3,4,5,6,7,8,9,10]:[1,2,3,4,5]);
+      inner='<div role="radiogroup" aria-labelledby="'+id+'_l" class="chips'+(q.t==='scale'?' scale':'')+(q.t==='nps'?' scale nps':'')+'">'+opts.map(function(o){return '<label><input type="radio" name="'+id+'" value="'+esc(o)+'">'+esc(o)+'</label>';}).join('')+'</div>';
+      if(q.t==='scale') inner+='<div class="ends"><span>1 · '+esc(q.lo)+'</span><span>5 · '+esc(q.hi)+'</span></div>';
+      if(q.t==='nps') inner+='<div class="ends"><span>0 · De jeito nenhum</span><span>10 · Com certeza</span></div>';
+    }
+    if(q.note) inner+='<span class="note">'+esc(q.note)+'</span>';
+    html+='<div class="q" data-q="'+q.id+'">'+lab+inner+'<span class="err" hidden>Responda esta pergunta para seguir.</span></div>';
+  });
+  box.innerHTML=html;
+  box.addEventListener('change',function(e){ if(e.target.type==='radio'){ box.querySelectorAll('input[name="'+e.target.name+'"]').forEach(function(r){r.parentNode.classList.toggle('on',r.checked);}); } });
+  function val(q){var id='q_'+q.id; if(q.t==='text'||q.t==='num'||q.t==='long'){return (document.getElementById(id).value||'').trim();} var r=box.querySelector('input[name="'+id+'"]:checked'); return r?r.value:'';}
+  return {
+    read:function(){return qs.map(function(q){return {id:q.id,q:q.q,a:val(q)};});},
+    missing:function(){return qs.filter(function(q){return q.req&&!val(q);});},
+    mark:function(){var first=null; qs.forEach(function(q){var el=box.querySelector('[data-q="'+q.id+'"]'), miss=!!(q.req&&!val(q)); el.classList.toggle('bad',miss); el.querySelector('.err').hidden=!miss; if(miss&&!first)first=el;}); if(first)first.scrollIntoView({behavior:'smooth',block:'center'});},
+    clearMarks:function(){qs.forEach(function(q){var el=box.querySelector('[data-q="'+q.id+'"]'); if(q.req&&val(q)){el.classList.remove('bad');el.querySelector('.err').hidden=true;}});}
+  };
+}
+/* Grey until ready; a tap while grey shows what is missing. */
+function gate(btn,form,box,go){
+  function upd(){var ok=!form.missing().length; btn.classList.toggle('off',!ok); btn.setAttribute('aria-disabled',ok?'false':'true'); if(ok)form.clearMarks(); else form.clearMarks();}
+  box.addEventListener('input',upd); box.addEventListener('change',upd); upd();
+  btn.addEventListener('click',function(){ if(form.missing().length){form.mark();return;} go(); });
+}
+
+var G='familia', PRE='', TITLES=["Comece a usar o app", "Um remédio novo", "Hora do almoço", "Ele não quis tomar", "Ele ficou tonto", "Como foi a noite", "Sair mais cedo", "Uma nova cuidadora", "Uma emergência", "Corrigir um engano", "Cuidar de mais uma pessoa", "Médias para a consulta", "Um compromisso amanhã"], QS=[{"id": "facil", "q": "O que foi mais fácil?", "t": "long", "req": 1}, {"id": "dificil", "q": "E o que foi mais difícil?", "t": "long", "req": 1}, {"id": "palavra", "q": "Teve alguma palavra ou botão que você não entendeu? Qual?", "t": "long"}, {"id": "usaria", "q": "Você usaria isso no dia a dia, junto com as outras pessoas que cuidam?", "t": "choice", "opts": ["Sim", "Talvez", "Não"], "req": 1}, {"id": "usariaPq", "q": "Por quê?", "t": "long"}, {"id": "nps", "q": "De 0 a 10, quanto você indicaria para outra família que cuida de alguém?", "t": "nps", "req": 1}, {"id": "offline", "q": "Se o app mostrasse \"Sem internet: o que você marcar fica guardado e é enviado depois\", você confiaria?", "t": "choice", "opts": ["Sim", "Talvez", "Não"], "req": 1}, {"id": "offlinePq", "q": "Por quê? Ou o que faria no lugar?", "t": "long"}, {"id": "mais", "q": "Quer dizer mais alguma coisa sobre o app?", "t": "long"}], CFG=window.__ccCfg||{};
+var SCR={'Today':'Hoje','Today-C':'Hoje','Today-Maria':'Hoje da Vó Maria','PersonSwitch':'Trocar pessoa','PersonSwitch-Maria':'Trocar pessoa','Routine':'Rotina','Routine-RO':'Rotina (só leitura)','AddChoice':'Adicionar','CareSingle-Novo':'Novo remédio','CantDo':'Não consegui','Log':'Registrar sintoma','Report':'Relatórios','Measures':'Medições','Agenda':'Agenda','ShiftSwap':'Troca de turno','Handoff':'Passagem do cuidado','RecordDetail-Handoff':'Detalhe do registro','Settings':'Ajustes','Settings-Caregiver':'Ajustes','HandoffNow':'Passar o cuidado','Network':'Pessoas que cuidam','Network-RO':'Pessoas que cuidam','NetworkInvite':'Convidar','EmergencyNow':'SOS','Emergency':'Ficha de emergência','FirstShift':'Primeira vez','CareGuide-RO':'Como cuidar','CareDone':'Cuidado feito','Welcome-Caricia':'Boas-vindas','InviteJoin-1':'Convite','InviteJoin-2':'Criar conta','InviteJoin-3':'Pronto'};
+function nm(s){return SCR[s]||(s&&s.indexOf('Onboarding')===0?'Cadastro '+s.slice(11):s);}
+function mmss(s){s=s||0;return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+var d=AD.get()||{};
+if(!d.tasks||!Object.keys(d.tasks).length) document.getElementById('none').hidden=false;
+function taskLine(k){
+  var t=(d.tasks||{})[PRE+k]; if(!t) return 'Não feita';
+  var parts=[(t.ok?'Concluiu':'Não conseguiu')+' em '+mmss(t.seg),'nota '+t.nota+'/5','ordem '+t.pos+'ª'];
+  if(t.fora&&t.fora.length) parts.push(t.fora.length+' toque(s) fora da tarefa: '+t.fora.map(function(x){return nm(x[0])+(x[1]?' › '+x[1]:'');}).join('; '));
+  if(t.cinza&&t.cinza.length) parts.push(t.cinza.length+' toque(s) em botão cinza: '+t.cinza.map(function(x){return nm(x[0])+' › '+x[1];}).join('; '));
+  if(t.erros&&t.erros.length) parts.push('ERRO: '+t.erros.filter(function(x,i,a){return a.indexOf(x)===i;}).join('; ')+' ('+t.erros.length+'x)');
+  parts.push('Caminho: '+(t.caminho||[]).map(function(x){return nm(x[0])+' '+x[1]+'s';}).join(' → '));
+  if(t.comentario) parts.push('Comentário: '+t.comentario);
+  return parts.join(' · ');
+}
+function qa(list){return (list||[]).map(function(x,i){return (i+1)+'. '+x.q+' — '+(x.a||'(sem resposta)');}).join('\n');}
+function fields(fin){
+  var f={grupo:G==='familia'?'Família':'Cuidadores', participante:((d.p||{}).nome||'')+' · '+((d.p||{}).idade||'')+' anos', ordem:(d.order||[]).map(function(k){return PRE+k;}).join(', '), iniciais:qa(d.ini), finais:qa(fin)};
+  for(var k=1;k<=13;k++) f['t'+k]= k<=TITLES.length ? PRE+k+' '+TITLES[k-1]+' — '+taskLine(k) : '';
+  var full=JSON.parse(JSON.stringify(d)); full.fin=fin; full.fim=new Date().toISOString(); f.json=JSON.stringify(full);
+  return f;
+}
+function asText(f){
+  var s='TESTE DO CANTINHO · '+f.grupo+'\nParticipante: '+f.participante+'\nOrdem: '+f.ordem+'\n\nPERGUNTAS INICIAIS\n'+f.iniciais+'\n\nTAREFAS\n';
+  for(var k=1;k<=13;k++) if(f['t'+k]) s+=f['t'+k]+'\n\n';
+  return s+'PERGUNTAS FINAIS\n'+f.finais+'\n\nDADOS\n'+f.json;
+}
+var box=document.getElementById('qbox'), form=buildQs(box,QS);
+gate(document.getElementById('send'),form,box,function(){
+  var fin=form.read(), f=fields(fin);
+  d.fin=fin; AD.set(d);
+  var ok=CFG.formAction&&CFG.entries&&CFG.entries.json;
+  if(ok){
+    var gf=document.getElementById('gf'); gf.action=CFG.formAction; gf.innerHTML='';
+    Object.keys(CFG.entries).forEach(function(k){ if(f[k]===undefined) return; var i=document.createElement('input'); i.type='hidden'; i.name=CFG.entries[k]; i.value=f[k]; gf.appendChild(i); });
+    d.enviado=new Date().toISOString(); AD.set(d);
+    gf.submit(); return;
+  }
+  document.getElementById('s1').hidden=true; document.getElementById('s2').hidden=false; window.scrollTo(0,0);
+  document.getElementById('sendInfo').textContent='O envio automático ainda não foi configurado. Toque em "Copiar respostas" e mande o texto para quem pediu o teste, pelo WhatsApp ou e-mail.';
+  document.getElementById('all').value=asText(f);
+});
+document.getElementById('copy').onclick=function(){
+  var ta=document.getElementById('all'); ta.select();
+  var done=function(){document.getElementById('copied').hidden=false;};
+  if(navigator.clipboard) navigator.clipboard.writeText(ta.value).then(done,function(){document.execCommand('copy');done();}); else {document.execCommand('copy');done();}
+};
+</script></body></html>

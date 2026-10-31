@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teste do Cantinho · Cuidadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap">
+<style>
+:root{--bg:#F4F6F8;--surf:#FFFFFF;--line:#DDE3E8;--ink:#13202B;--mut:#4A5A68;--acc:#1D4ED8;--accBg:#E5ECFD;--warnBg:#FFF4ED;--warn:#9A3412;--off:#C9D2DA}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:480px;margin:0 auto;padding:28px 18px 40px;display:flex;flex-direction:column;gap:18px}
+.kick{font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--acc)}
+h1{margin:0;font-size:30px;line-height:1.18;font-weight:800}
+h2{margin:0;font-size:21px;line-height:1.25;font-weight:800}
+p{margin:0;font-size:18px;line-height:1.5;color:#344250}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.li{display:flex;gap:12px;font-size:17px;line-height:1.45}
+.li b{display:block}
+.dot{flex-shrink:0;width:26px;height:26px;border-radius:13px;background:var(--accBg);color:var(--acc);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.q{display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--surf);border:1px solid var(--line);border-radius:18px}
+.q.bad{border:2px solid #EA580C}
+.ql{font-size:17px;font-weight:800;line-height:1.35}
+.opt{font-weight:600;color:var(--mut);font-size:14px}
+.note{font-size:14px;color:var(--mut);line-height:1.4}
+input[type=text],input[type=number],textarea{width:100%;font:inherit;font-size:17px;color:var(--ink);background:var(--bg);border:1px solid #C9D2DA;border-radius:14px;padding:12px 14px}
+input[type=text],input[type=number]{height:52px}
+textarea{min-height:92px;resize:vertical;line-height:1.4}
+input:focus,textarea:focus,button:focus-visible,label:focus-within{outline:3px solid #93B4FF;outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;min-height:48px;padding:0 16px;border-radius:24px;border:1px solid #C9D2DA;background:var(--bg);display:flex;align-items:center;font-size:16px;font-weight:700;cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.scale{display:flex;gap:6px}
+.scale label{flex:1;justify-content:center;padding:0;border-radius:14px;height:52px;font-size:19px;font-weight:800}
+.ends{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:700;color:var(--mut)}
+.ends span:last-child{text-align:right}
+.nps label{font-size:16px;height:46px}
+.nps{flex-wrap:wrap}
+.nps label{flex:0 0 calc((100% - 30px)/6)}
+.err{font-size:14px;font-weight:800;color:var(--warn)}
+.btn{height:60px;border-radius:18px;border:none;font:inherit;font-size:19px;font-weight:800;background:var(--acc);color:#fff;cursor:pointer;width:100%}
+.btn.off{background:var(--off);color:var(--mut);cursor:default}
+.btn2{height:52px;border-radius:16px;border:1px solid var(--line);background:var(--surf);color:var(--ink);font:inherit;font-size:16px;font-weight:800;cursor:pointer;width:100%}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:17px;font-weight:700;line-height:1.4;cursor:pointer}
+.check input{width:26px;height:26px;flex-shrink:0;margin:0;accent-color:var(--acc)}
+.warn{background:var(--warnBg);color:#7C2D12;border-radius:14px;padding:12px 14px;font-size:15px;font-weight:700;line-height:1.45}
+.ok{background:#DCFCE7;color:#14532D;border-radius:14px;padding:14px;font-size:16px;font-weight:700;line-height:1.45}
+.step{display:flex;flex-direction:column;gap:18px}
+.step[hidden]{display:none}
+.bar{display:flex;gap:6px}.bar span{flex:1;height:6px;border-radius:3px;background:var(--line)}.bar span.on{background:var(--acc)}
+</style></head><body><main>
+<section class="step" id="s1">
+  <span class="kick">TESTE DO APP CANTINHO · CUIDADORES</span>
+  <h1>Obrigado por ajudar!</h1>
+  <p>O Cantinho é um app para organizar os cuidados de uma pessoa idosa entre a família e as cuidadoras. Ele ainda é um rascunho, e queremos saber onde ele é fácil e onde atrapalha.</p>
+  <p>Você vai fazer 9 tarefas curtas no app, fazendo o papel da Rosa ou a Sandra, cuidadoras contratadas do Seu José. Leva de 30 a 40 minutos. Faça sozinho ou sozinha, no seu ritmo.</p>
+  <div class="warn">Quem está sendo testado é o app, não você. Se algo for difícil, a culpa é dele.</div>
+  <div id="resume" hidden class="ok"></div>
+  <button class="btn" id="go1">Começar</button>
+</section>
+<section class="step" id="s2" hidden>
+  <span class="kick">PASSO 1 DE 3 · CONSENTIMENTO</span>
+  <h2>Antes de começar</h2>
+  <div class="card"><div class="li"><span class="dot">1</span><span>Nada é gravado: nem a tela, nem a voz, nem o rosto.</span></div><div class="li"><span class="dot">2</span><span>O protótipo anota onde você toca e quanto tempo leva em cada tarefa. Isso, junto com as suas respostas, vai para a equipe por um Formulário Google quando você tocar em "Enviar" no final.</span></div><div class="li"><span class="dot">3</span><span>Serve só para melhorar o app. Não vai para redes sociais nem para fora da equipe.</span></div><div class="li"><span class="dot">4</span><span>Você pode parar a qualquer momento, sem explicar o motivo. Se parar antes do fim, nada é enviado.</span></div><div class="li"><span class="dot">5</span><span>As respostas são apagadas até 90 dias depois do teste. Nos relatórios, ninguém aparece pelo nome.</span></div></div>
+  <label class="check"><input type="checkbox" id="agree"> Li e concordo em participar.</label>
+  <span class="err" id="agreeErr" hidden>Marque "Li e concordo" para seguir.</span>
+  <button class="btn off" aria-disabled="true" id="go2">Continuar</button>
+  <button class="btn2" id="back2">Voltar</button>
+</section>
+<section class="step" id="s3" hidden>
+  <span class="kick">PASSO 2 DE 3 · SOBRE VOCÊ</span>
+  <h2>Algumas perguntas rápidas</h2>
+  <p>Não existe resposta certa. As marcadas com "(opcional)" você pode pular.</p>
+  <div id="qbox" style="display:flex;flex-direction:column;gap:12px"></div>
+  <button class="btn off" aria-disabled="true" id="go3">Continuar</button>
+</section>
+<section class="step" id="s4" hidden>
+  <span class="kick">PASSO 3 DE 3 · COMO FUNCIONA</span>
+  <h2>Como funcionam as tarefas</h2>
+  <div class="card"><div class="li"><span class="dot">1</span><span><b>O texto da tarefa fica sempre no topo da tela.</b>Leia com calma. Se esquecer quem você é ou que horas são, é só olhar lá.</span></div><div class="li"><span class="dot">2</span><span><b>Em cada tarefa, só funciona o que ela pede.</b>Se tocar em outra parte, aparece um aviso amarelo e nada muda. Tudo bem: volte e tente outro caminho.</span></div><div class="li"><span class="dot">3</span><span><b>É um rascunho.</b>Os textos e horários são de exemplo. As ligações são de mentira: nada é discado de verdade.</span></div><div class="li"><span class="dot">4</span><span><b>Travou?</b>Depois de 3 minutos, o botão "Não consegui" fica ativo no topo. Desistir também ajuda: mostra o que precisa melhorar.</span></div><div class="li"><span class="dot">5</span><span><b>Depois de cada tarefa</b>Você dá uma nota de 1 a 5 para a facilidade e, se quiser, escreve um comentário.</span></div></div>
+  <div class="warn">Não feche esta aba do navegador até o fim. Se fechar sem querer, abra o mesmo link de novo: dá para continuar de onde parou.</div>
+  <button class="btn" id="go4">Começar as tarefas</button>
+</section>
+</main>
+<script>
+var AD={get:function(){try{if((window.name||'').indexOf('ccA:')===0)return JSON.parse(window.name.slice(4));}catch(e){}try{return JSON.parse(localStorage.getItem('cc-async')||'null');}catch(e){return null;}},
+set:function(d){var j=JSON.stringify(d);try{window.name='ccA:'+j;}catch(e){}try{localStorage.setItem('cc-async',j);}catch(e){}}};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+/* Builds the questions into a container and returns a reader. Buttons stay grey until required answers are in; hints show only after a tap. */
+function buildQs(box,qs){
+  var html='';
+  qs.forEach(function(q,i){
+    var id='q_'+q.id, lab='<span class="ql" id="'+id+'_l">'+esc(q.q)+(q.req?'':' <span class="opt">(opcional)</span>')+'</span>';
+    var inner='';
+    if(q.t==='text'||q.t==='num') inner='<input type="'+(q.t==='num'?'number':'text')+'" '+(q.t==='num'?'inputmode="numeric" min="5" max="110"':'')+' id="'+id+'" aria-labelledby="'+id+'_l" placeholder="'+esc(q.ph||'')+'">';
+    else if(q.t==='long') inner='<textarea id="'+id+'" aria-labelledby="'+id+'_l" placeholder="'+esc(q.ph||'')+'"></textarea>';
+    else {
+      var opts=q.t==='choice'?q.opts:(q.t==='nps'?[0,1,2,3,4,5,6,7,8,9,10]:[1,2,3,4,5]);
+      inner='<div role="radiogroup" aria-labelledby="'+id+'_l" class="chips'+(q.t==='scale'?' scale':'')+(q.t==='nps'?' scale nps':'')+'">'+opts.map(function(o){return '<label><input type="radio" name="'+id+'" value="'+esc(o)+'">'+esc(o)+'</label>';}).join('')+'</div>';
+      if(q.t==='scale') inner+='<div class="ends"><span>1 · '+esc(q.lo)+'</span><span>5 · '+esc(q.hi)+'</span></div>';
+      if(q.t==='nps') inner+='<div class="ends"><span>0 · De jeito nenhum</span><span>10 · Com certeza</span></div>';
+    }
+    if(q.note) inner+='<span class="note">'+esc(q.note)+'</span>';
+    html+='<div class="q" data-q="'+q.id+'">'+lab+inner+'<span class="err" hidden>Responda esta pergunta para seguir.</span></div>';
+  });
+  box.innerHTML=html;
+  box.addEventListener('change',function(e){ if(e.target.type==='radio'){ box.querySelectorAll('input[name="'+e.target.name+'"]').forEach(function(r){r.parentNode.classList.toggle('on',r.checked);}); } });
+  function val(q){var id='q_'+q.id; if(q.t==='text'||q.t==='num'||q.t==='long'){return (document.getElementById(id).value||'').trim();} var r=box.querySelector('input[name="'+id+'"]:checked'); return r?r.value:'';}
+  return {
+    read:function(){return qs.map(function(q){return {id:q.id,q:q.q,a:val(q)};});},
+    missing:function(){return qs.filter(function(q){return q.req&&!val(q);});},
+    mark:function(){var first=null; qs.forEach(function(q){var el=box.querySelector('[data-q="'+q.id+'"]'), miss=!!(q.req&&!val(q)); el.classList.toggle('bad',miss); el.querySelector('.err').hidden=!miss; if(miss&&!first)first=el;}); if(first)first.scrollIntoView({behavior:'smooth',block:'center'});},
+    clearMarks:function(){qs.forEach(function(q){var el=box.querySelector('[data-q="'+q.id+'"]'); if(q.req&&val(q)){el.classList.remove('bad');el.querySelector('.err').hidden=true;}});}
+  };
+}
+/* Grey until ready; a tap while grey shows what is missing. */
+function gate(btn,form,box,go){
+  function upd(){var ok=!form.missing().length; btn.classList.toggle('off',!ok); btn.setAttribute('aria-disabled',ok?'false':'true'); if(ok)form.clearMarks(); else form.clearMarks();}
+  box.addEventListener('input',upd); box.addEventListener('change',upd); upd();
+  btn.addEventListener('click',function(){ if(form.missing().length){form.mark();return;} go(); });
+}
+
+var G='cuidadores', PRE='C', N=9, QS=[{"id": "nome", "q": "Como você prefere ser chamado ou chamada?", "t": "text", "req": 1}, {"id": "idade", "q": "Qual a sua idade?", "t": "num", "req": 1}, {"id": "trabalha", "q": "Você trabalha ou já trabalhou cuidando de alguém?", "t": "choice", "opts": ["Trabalho hoje", "Já trabalhei", "Nunca trabalhei"], "req": 1}, {"id": "tempo", "q": "Se trabalha ou trabalhou: há quanto tempo? Fez algum curso, como cuidador ou técnico de enfermagem?", "t": "long"}, {"id": "quantas", "q": "Se cuida: de quantas pessoas cuida hoje? Já usou algum app no trabalho?", "t": "long"}, {"id": "qualCel", "q": "Se cuida: usaria o seu celular ou um celular da casa onde trabalha?", "t": "choice", "opts": ["O meu", "O da casa", "Tanto faz", "Não se aplica"]}, {"id": "wifi", "q": "Em casa, você tem wi-fi?", "t": "choice", "opts": ["Sim", "Não"], "req": 1}, {"id": "dados", "q": "Na rua, você usa dados móveis?", "t": "choice", "opts": ["Sim", "Às vezes", "Não"], "req": 1}, {"id": "wifiCasa", "q": "Se trabalha cuidando: a casa onde trabalha tem wi-fi e a família libera a senha?", "t": "choice", "opts": ["Tem e liberam a senha", "Tem, mas não liberam", "Não tem wi-fi", "Não se aplica"]}, {"id": "sinal", "q": "Como é o sinal de celular onde você passa o dia, em todos os cômodos?", "t": "scale", "lo": "Muito ruim", "hi": "Muito bom", "req": 1}, {"id": "sinalRua", "q": "E no caminho, ou quando acompanha alguém em consulta ou hospital?", "t": "scale", "lo": "Muito ruim", "hi": "Muito bom"}, {"id": "semNet", "q": "Já ficou sem internet no meio de algo importante? O que fez?", "t": "long"}, {"id": "acabam", "q": "Seus dados móveis costumam acabar antes do fim do mês?", "t": "choice", "opts": ["Sim", "Às vezes", "Não"]}, {"id": "celular", "q": "Que celular você usa?", "t": "choice", "opts": ["Android", "iPhone", "Não sei"], "req": 1}, {"id": "oculos", "q": "Usa óculos para ler no celular?", "t": "choice", "opts": ["Sim", "Às vezes", "Não"], "req": 1}, {"id": "letra", "q": "No seu celular, a letra fica em que tamanho?", "t": "scale", "lo": "Muito pequena", "hi": "Muito grande", "note": "3 é o tamanho que vem no celular.", "req": 1}, {"id": "vontade", "q": "Quanto você se sente à vontade usando o celular?", "t": "scale", "lo": "Só o básico, com ajuda", "hi": "Instalo e configuro apps sozinho(a)", "req": 1}, {"id": "orient", "q": "Se cuida: como recebe as orientações de quem contrata? E como registra o que fez no dia?", "t": "long", "ph": "Caderno, WhatsApp, de boca..."}, {"id": "passagem", "q": "Se cuida: o que mais dá trabalho ou gera mal-entendido quando passa o cuidado para outra pessoa?", "t": "long"}];
+function show(n){document.querySelectorAll('.step').forEach(function(s){s.hidden=s.id!=='s'+n;}); window.scrollTo(0,0);}
+function nextTask(d){ if(!d||!d.order) return 1; for(var i=0;i<d.order.length;i++){ if(!(d.tasks||{})[PRE+d.order[i]]) return d.order[i]; } return null; }
+var old=AD.get();
+if(old&&old.grupo===G&&!old.enviado&&old.p&&old.tasks&&Object.keys(old.tasks).length){
+  var nx=nextTask(old), r=document.getElementById('resume');
+  r.hidden=false;
+  r.innerHTML='Você já começou: '+Object.keys(old.tasks).length+' de '+N+' tarefas feitas.<br><button class="btn" style="margin-top:12px" id="cont">Continuar de onde parei</button>';
+  document.getElementById('cont').onclick=function(){ location.href=nx?'./teste-'+nx+'.html':'./fim.html'; };
+  document.getElementById('go1').textContent='Começar do zero';
+}
+document.getElementById('go1').onclick=function(){show(2);};
+document.getElementById('back2').onclick=function(){show(1);};
+var agree=document.getElementById('agree'), go2=document.getElementById('go2');
+agree.onchange=function(){go2.classList.toggle('off',!agree.checked); go2.setAttribute('aria-disabled',agree.checked?'false':'true'); if(agree.checked)document.getElementById('agreeErr').hidden=true;};
+go2.onclick=function(){ if(!agree.checked){document.getElementById('agreeErr').hidden=false;return;} show(3); };
+var box=document.getElementById('qbox'), form=buildQs(box,QS);
+gate(document.getElementById('go3'),form,box,function(){show(4);});
+document.getElementById('go4').onclick=function(){
+  var ini=form.read(), get=function(id){for(var i=0;i<ini.length;i++)if(ini[i].id===id)return ini[i].a;return '';};
+  AD.set({v:1,grupo:G,inicio:new Date().toISOString(),consentimento:true,p:{nome:get('nome'),idade:get('idade')},ini:ini,tasks:{},
+    aparelho:{tela:screen.width+'x'+screen.height,ua:navigator.userAgent}});
+  try{localStorage.removeItem('caricia-ordem-'+(G==='familia'?'familia':'cuidadoras'));}catch(e){}
+  location.href='./teste-1.html';
+};
+</script></body></html>

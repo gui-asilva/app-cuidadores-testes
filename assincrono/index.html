@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teste do Cantinho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap">
+<style>
+:root{--bg:#F4F6F8;--surf:#FFFFFF;--line:#DDE3E8;--ink:#13202B;--mut:#4A5A68;--acc:#1D4ED8;--accBg:#E5ECFD;--warnBg:#FFF4ED;--warn:#9A3412;--off:#C9D2DA}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:480px;margin:0 auto;padding:28px 18px 40px;display:flex;flex-direction:column;gap:18px}
+.kick{font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--acc)}
+h1{margin:0;font-size:30px;line-height:1.18;font-weight:800}
+h2{margin:0;font-size:21px;line-height:1.25;font-weight:800}
+p{margin:0;font-size:18px;line-height:1.5;color:#344250}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.li{display:flex;gap:12px;font-size:17px;line-height:1.45}
+.li b{display:block}
+.dot{flex-shrink:0;width:26px;height:26px;border-radius:13px;background:var(--accBg);color:var(--acc);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.q{display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--surf);border:1px solid var(--line);border-radius:18px}
+.q.bad{border:2px solid #EA580C}
+.ql{font-size:17px;font-weight:800;line-height:1.35}
+.opt{font-weight:600;color:var(--mut);font-size:14px}
+.note{font-size:14px;color:var(--mut);line-height:1.4}
+input[type=text],input[type=number],textarea{width:100%;font:inherit;font-size:17px;color:var(--ink);background:var(--bg);border:1px solid #C9D2DA;border-radius:14px;padding:12px 14px}
+input[type=text],input[type=number]{height:52px}
+textarea{min-height:92px;resize:vertical;line-height:1.4}
+input:focus,textarea:focus,button:focus-visible,label:focus-within{outline:3px solid #93B4FF;outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;min-height:48px;padding:0 16px;border-radius:24px;border:1px solid #C9D2DA;background:var(--bg);display:flex;align-items:center;font-size:16px;font-weight:700;cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.scale{display:flex;gap:6px}
+.scale label{flex:1;justify-content:center;padding:0;border-radius:14px;height:52px;font-size:19px;font-weight:800}
+.ends{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:700;color:var(--mut)}
+.ends span:last-child{text-align:right}
+.nps label{font-size:16px;height:46px}
+.nps{flex-wrap:wrap}
+.nps label{flex:0 0 calc((100% - 30px)/6)}
+.err{font-size:14px;font-weight:800;color:var(--warn)}
+.btn{height:60px;border-radius:18px;border:none;font:inherit;font-size:19px;font-weight:800;background:var(--acc);color:#fff;cursor:pointer;width:100%}
+.btn.off{background:var(--off);color:var(--mut);cursor:default}
+.btn2{height:52px;border-radius:16px;border:1px solid var(--line);background:var(--surf);color:var(--ink);font:inherit;font-size:16px;font-weight:800;cursor:pointer;width:100%}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:17px;font-weight:700;line-height:1.4;cursor:pointer}
+.check input{width:26px;height:26px;flex-shrink:0;margin:0;accent-color:var(--acc)}
+.warn{background:var(--warnBg);color:#7C2D12;border-radius:14px;padding:12px 14px;font-size:15px;font-weight:700;line-height:1.45}
+.ok{background:#DCFCE7;color:#14532D;border-radius:14px;padding:14px;font-size:16px;font-weight:700;line-height:1.45}
+.step{display:flex;flex-direction:column;gap:18px}
+.step[hidden]{display:none}
+.bar{display:flex;gap:6px}.bar span{flex:1;height:6px;border-radius:3px;background:var(--line)}.bar span.on{background:var(--acc)}
+
+a.card{text-decoration:none;color:inherit}</style></head><body><main>
+<span class="kick">TESTE DO APP CANTINHO</span>
+<h1>Qual teste você vai fazer?</h1>
+<p>Escolha o que combina com você. Se ficou em dúvida, pergunte a quem mandou o link.</p>
+<a class="card" href="./familia/index.html"><h2>Família</h2><span class="note" style="font-size:16px">Para quem cuida de um parente, já cuidou ou pode vir a cuidar. 13 tarefas, cerca de 40 minutos.</span></a>
+<a class="card" href="./cuidadores/index.html"><h2>Cuidadoras e cuidadores</h2><span class="note" style="font-size:16px">Para quem trabalha ou já trabalhou cuidando de alguém. 9 tarefas, cerca de 35 minutos.</span></a>
+</main></body></html>
