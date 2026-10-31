@@ -20,6 +20,8 @@ COMO A PESSOA FAZ O TESTE
 
 O QUE O PROTÓTIPO ANOTA SOZINHO, EM CADA TAREFA
 - se concluiu ou tocou em "Não consegui" (no assíncrono, ele fica ativo depois de 3 minutos, e não 5);
+- se pediu dica (botão "Dica", ativo depois de 1min30; ou oferecida depois de 3 avisos amarelos), qual nível e quando.
+  Na planilha, o Resultado vira "Com dica" sozinho;
 - o tempo total;
 - o caminho: cada tela por onde passou e quantos segundos ficou nela;
 - os toques fora da tarefa (os que mostram o aviso amarelo), com a tela e o botão;

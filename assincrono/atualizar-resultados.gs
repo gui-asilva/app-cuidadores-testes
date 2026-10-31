@@ -21,8 +21,8 @@ var PRIMEIRA_LINHA = 5;
 
 var TELAS = {
   'Today': 'Hoje', 'Today-Maria': 'Hoje da Vó Maria', 'PersonSwitch': 'Trocar pessoa', 'PersonSwitch-Maria': 'Trocar pessoa',
-  'Routine': 'Rotina', 'Routine-RO': 'Rotina (só leitura)', 'AddChoice': 'Adicionar', 'CareSingle-Novo': 'Novo remédio',
-  'CantDo': 'Não consegui', 'Log': 'Registrar sintoma', 'Report': 'Relatórios', 'Measures': 'Medições', 'Agenda': 'Agenda',
+  'Routine': 'Cuidados', 'Routine-RO': 'Cuidados (só leitura)', 'AddChoice': 'Adicionar', 'CareSingle-Novo': 'Novo remédio',
+  'CantDo': 'Não foi feito', 'Log': 'Registrar sintoma', 'Report': 'Relatórios', 'Measures': 'Medições', 'Agenda': 'Escala',
   'ShiftSwap': 'Troca de turno', 'Handoff': 'Passagem do cuidado', 'RecordDetail-Handoff': 'Detalhe do registro',
   'Settings': 'Ajustes', 'Settings-Caregiver': 'Ajustes', 'HandoffNow': 'Passar o cuidado', 'Network': 'Pessoas que cuidam',
   'Network-RO': 'Pessoas que cuidam', 'NetworkInvite': 'Convidar', 'EmergencyNow': 'SOS', 'Emergency': 'Ficha de emergência',
@@ -216,11 +216,12 @@ function escreverTarefas(ss, g, id, d) {
       var erros = (t.erros || []).filter(function (x, i, a) { return a.indexOf(x) === i; });
       mapa.D = Math.floor((t.seg || 0) / 60);
       mapa.E = (t.seg || 0) % 60;
-      mapa.G = t.ok ? 'Sozinha' : 'Não conseguiu';
+      var dicas = t.dicas || [];
+      mapa.G = !t.ok ? 'Não conseguiu' : dicas.length ? 'Com dica' : 'Sozinha';
       mapa.H = num(t.nota);
       mapa.I = junta(fora.length ? fora.length + ' toque(s) fora: ' + fora.join('; ') : '', cinza.length ? cinza.length + ' toque(s) em botão cinza: ' + cinza.join('; ') : '', 'Caminho: ' + caminho);
       mapa.K = erros.length ? erros.join('; ') + ' (' + (t.erros || []).length + 'x)' : '';
-      mapa.N = junta(t.resposta ? 'Resposta: ' + t.resposta : '', t.comentario || '');
+      mapa.N = junta(dicas.length ? 'Dicas: ' + dicas.map(function (x) { return 'nível ' + x.nivel + ' aos ' + x.seg + 's'; }).join(', ') + (t.ofereceuDica !== undefined ? ' (oferecida após 3 avisos)' : '') : '', t.resposta ? 'Resposta: ' + t.resposta : '', t.comentario || '');
       mapa.O = num(t.pos);
     } else {
       mapa.D = ''; mapa.E = ''; mapa.G = ''; mapa.H = ''; mapa.I = 'Não chegou a fazer'; mapa.K = ''; mapa.N = ''; mapa.O = '';
