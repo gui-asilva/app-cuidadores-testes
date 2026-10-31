@@ -119,6 +119,7 @@ function taskLine(k){
   if(t.cinza&&t.cinza.length) parts.push(t.cinza.length+' toque(s) em botão cinza: '+t.cinza.map(function(x){return nm(x[0])+' › '+x[1];}).join('; '));
   if(t.erros&&t.erros.length) parts.push('ERRO: '+t.erros.filter(function(x,i,a){return a.indexOf(x)===i;}).join('; ')+' ('+t.erros.length+'x)');
   parts.push('Caminho: '+(t.caminho||[]).map(function(x){return nm(x[0])+' '+x[1]+'s';}).join(' → '));
+  if(t.resposta) parts.push('Resposta: '+t.resposta);
   if(t.comentario) parts.push('Comentário: '+t.comentario);
   return parts.join(' · ');
 }

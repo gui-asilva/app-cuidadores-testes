@@ -220,7 +220,7 @@ function escreverTarefas(ss, g, id, d) {
       mapa.H = num(t.nota);
       mapa.I = junta(fora.length ? fora.length + ' toque(s) fora: ' + fora.join('; ') : '', cinza.length ? cinza.length + ' toque(s) em botão cinza: ' + cinza.join('; ') : '', 'Caminho: ' + caminho);
       mapa.K = erros.length ? erros.join('; ') + ' (' + (t.erros || []).length + 'x)' : '';
-      mapa.N = t.comentario || '';
+      mapa.N = junta(t.resposta ? 'Resposta: ' + t.resposta : '', t.comentario || '');
       mapa.O = num(t.pos);
     } else {
       mapa.D = ''; mapa.E = ''; mapa.G = ''; mapa.H = ''; mapa.I = 'Não chegou a fazer'; mapa.K = ''; mapa.N = ''; mapa.O = '';
