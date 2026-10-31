@@ -7,6 +7,8 @@ O QUE TEM NESTA PASTA
 - cuidadores/ ........ 9 tarefas (teste-1 a teste-9), início e final.
 - config.js .......... (dentro de cada pasta) para onde as respostas vão.
 - criar-formulario.gs  script que cria o Formulário Google e a planilha de respostas.
+- atualizar-resultados.gs  script que leva as respostas para as abas da planilha de resultados.
+- Resultados-teste-usabilidade.xlsx  a planilha de resultados, para importar.
 
 COMO A PESSOA FAZ O TESTE
 1. Abre o link e escolhe o grupo.
@@ -39,6 +41,20 @@ COMO LIGAR AO FORMULÁRIO GOOGLE (uma vez só, uns 5 minutos)
 
 Enquanto o config.js estiver vazio, o botão "Enviar respostas" mostra o texto completo
 com um botão "Copiar respostas" para a pessoa mandar por WhatsApp ou e-mail.
+
+LEVAR AS RESPOSTAS PARA A PLANILHA DE RESULTADOS (uma vez só, uns 5 minutos)
+1. Abra a planilha de respostas que o criar-formulario.gs criou ("Teste do Cantinho · respostas").
+2. Arquivo → Importar → Fazer upload → escolha a Resultados-teste-usabilidade.xlsx
+   → "Inserir nova(s) página(s)". As abas Resumo, Tarefas, Final etc. entram nessa mesma planilha.
+3. Extensões → Apps Script. Apague o que estiver no editor, cole o atualizar-resultados.gs e salve.
+4. Volte à planilha e recarregue a página. Aparece o menu "Cantinho".
+5. Cantinho → "Atualizar sozinho a cada envio". Na primeira vez, o Google pede autorização.
+   A partir daí, cada resposta nova vira linhas nas abas Participantes, Tarefas e Final,
+   e o Resumo se recalcula sozinho. "Atualizar resultados" faz o mesmo na hora, à mão.
+- IDs do assíncrono: FA1, FA2… (família) e CUA1, CUA2… (cuidadoras). "Quem conduziu" = Assíncrono.
+- As linhas dos testes conduzidos (F1–F4, CU1–CU3) não são tocadas.
+- Ficam vazias, porque só quem conduz observa: "com dica", "Palavras que usou", Tipo e Gravidade.
+- A aba Problemas continua sendo sua: junte ali o que se repetir.
 
 COMO PUBLICAR O LINK
 Os arquivos precisam estar num endereço da internet (não funciona mandando o zip para a pessoa).
